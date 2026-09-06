@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ یه سوال مهم ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
+
+body{
+background:linear-gradient(135deg,#ffb6c1,#ffd6e7);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.box{
+
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+text-align:center;
+z-index:100;
+
+}
+
+h1{
+
+color:#ff3366;
+margin-bottom:30px;
+
+}
+
+button{
+
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+margin:10px;
+
+}
+
+#yes{
+
+background:#2ecc71;
+color:white;
+
+}
+
+#no{
+
+background:#ff4757;
+color:white;
+position:absolute;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>
+🥺 میای سر قرار با من؟ ❤️
+</h1>
+
+<button id="yes">
+بله 😍
+</button>
+
+<button id="no">
+خیر 😅
+</button>
+
+</div>
+<script>
+
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+// دکمه خیر فرار می‌کند
+function moveButton(){
+
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 60);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// وقتی روی بله کلیک شد
+yesBtn.onclick = function(){
+
+    document.body.innerHTML = `
+
+    <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(#ff8fb1,#ffd6e7);
+    color:white;
+    ">
+
+    <h1 style="font-size:55px;">
+    🥰 آخ جوووون
+    </h1>
+
+    <h2>
+    قرارمون قطعی شد ❤️🌹
+    </h2>
+
+    </div>
+
+    `;
+
+}
+// ساخت قلب
+function createHeart(){
+
+let h=document.createElement("div");
+
+h.className="heart";
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},6000);
+
+}
+
+// ساخت گل رز
+function createRose(){
+
+let r=document.createElement("div");
+
+r.className="rose";
+r.innerHTML="🌹";
+
+r.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(r);
+
+setTimeout(()=>{
+r.remove();
+},8000);
+
+}
+
+// شروع انیمیشن
+setInterval(createHeart,400);
+setInterval(createRose,900);
+  /* ستاره های درخشان */
+.sparkle{
+position:absolute;
+font-size:18px;
+animation:spark 3s linear;
+pointer-events:none;
+}
+
+@keyframes spark{
+
+0%{
+opacity:0;
+transform:scale(0);
+}
+
+50%{
+opacity:1;
+transform:scale(1.4);
+}
+
+100%{
+opacity:0;
+transform:scale(0);
+}
+
+}
+
+/* دکمه بله */
+#yes:hover{
+
+transform:scale(1.1);
+
+transition:.3s;
+
+box-shadow:0 0 20px #2ecc71;
+
+}
+
+/* شیشه ای شدن باکس */
+
+.box{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(10px);
+
+}
+  // ساخت ستاره
+
+function createSparkle(){
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*45+"vh"; // فقط نیمه بالای صفحه
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+
+s.remove();
+
+},3000);
+
+}
+
+setInterval(createSparkle,400);
+
+
+// دکمه خیر سریع تر فرار کند
+
+noBtn.addEventListener("mouseenter",()=>{
+
+moveButton();
+
+});
+  // ======================
+// 🎉 جشن بعد از زدن بله
+// ======================
+
+function confetti(){
+
+    for(let i=0;i<120;i++){
+
+        let c=document.createElement("div");
+
+        c.innerHTML=["💖","❤️","💕","🌸","✨","🌹"][Math.floor(Math.random()*6)];
+
+        c.style.position="fixed";
+        c.style.left=Math.random()*100+"vw";
+        c.style.top="-50px";
+        c.style.fontSize=(20+Math.random()*20)+"px";
+        c.style.pointerEvents="none";
+        c.style.zIndex="9999";
+
+        document.body.appendChild(c);
+
+        let x=(Math.random()-0.5)*300;
+
+        c.animate([
+            {
+                transform:"translate(0,0) rotate(0deg)"
+            },
+            {
+                transform:`translate(${x}px,110vh) rotate(720deg)`
+            }
+        ],{
+            duration:3000+Math.random()*2000,
+            easing:"linear"
+        });
+
+        setTimeout(()=>{
+            c.remove();
+        },5000);
+
+    }
+
+}
+
+
+// ======================
+// پیام عاشقانه
+// ======================
+
+yesBtn.onclick=function(){
+
+    confetti();
+
+    document.body.innerHTML=`
+
+<div style="
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(180deg,#ff7eb3,#ffc2d1,#fff0f5);
+color:white;
+text-align:center;
+">
+
+<h1 style="font-size:60px;">
+🥰 آخ جوووون
+</h1>
+
+<h2 style="margin-top:20px;">
+قرارمون قطعی شد ❤️
+</h2>
+
+<h3 style="margin-top:20px;">
+منتظرت میمونم 🌹💖
+</h3>
+
+</div>
+
+`;
+
+    setInterval(createHeart,150);
+    setInterval(createRose,500);
+
+};
+</script>
+
+</body>
+  
+</html>
